@@ -18,6 +18,7 @@ public class Zak extends Osoba{
         return this.prumer <= 1.5;
     }
     public void predstavSe(){
+        super.predstavSe();
         System.out.println(" jsem žák");
     }
 
