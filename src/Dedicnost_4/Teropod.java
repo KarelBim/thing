@@ -6,12 +6,14 @@ public class Teropod extends Dinosaur{
         super(jmeno, druh, vek);
         this.velikostZubu = velikost;
     }
-    public void vratPopis(){
-        super.vratPopis();
-        System.out.println();
-    }
     public void vratPopis(boolean b){
-        super.vratPopis();
-        System.out.println(", velikost zubu: " + velikostZubu);
+        if(b) {
+            super.vratPopis();
+            System.out.println(", velikost zubu: " + velikostZubu);
+        }
+        else{
+            super.vratPopis();
+            System.out.println();
+        }
     }
 }

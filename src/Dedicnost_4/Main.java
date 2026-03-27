@@ -11,11 +11,7 @@ public class Main {
         int choice = sc.nextInt();
         for (Dinosaur dinosaur : dinosaury) {
             if(dinosaur instanceof Teropod){
-                if(choice == 0){
-                    ((Teropod) dinosaur).vratPopis(true);
-                }else{
-                    dinosaur.vratPopis();
-                }
+                ((Teropod) dinosaur).vratPopis(choice == 0);
             }
             else{
                 dinosaur.vratPopis();
