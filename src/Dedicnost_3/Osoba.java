@@ -14,9 +14,12 @@ public class Osoba {
         return age;
     }
     public void vypisInfo(){
-        System.out.print("Jméno: " + name + " věk: " + age);
+        System.out.println("Jméno: " + name + " věk: " + age);
     }
     public void predstavSe(){
         System.out.print("Dobrý den jsem " + name);
+    }
+    public double getPrumer(){
+        return Integer.MAX_VALUE;
     }
 }
