@@ -9,6 +9,22 @@ public class Menu {
             osoba.predstavSe();
         }
     }
+    static void nejZak(){
+        Osoba o = null;
+        for(Osoba osoba : osoby){
+            if(o == null || o.getPrumer() > osoba.getPrumer()){
+                o = osoba;
+            }
+        }
+        System.out.println(o);
+    }
+    static void osobyStarsi(int age){
+        for(Osoba osoba : osoby){
+            if(osoba.getAge() >= age){
+                osoba.vypisInfo();
+            }
+        }
+    }
     public static void main(String[] args) {
         osoby.add(new Skolnik("Jaromír",53,true));
         osoby.add(new Reditel("Bohumil",68,12));
@@ -17,5 +33,7 @@ public class Menu {
         osoby.add(new Zak("Bob" ,16,"Economika",4.2));
         osoby.add(new Zak("Pepa", 21,"Lycelium",3));
         vypsat();
+        nejZak();
+        osobyStarsi(30);
     }
 }
