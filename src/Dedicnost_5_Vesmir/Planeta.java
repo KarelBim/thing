@@ -13,6 +13,6 @@ public class Planeta extends VesmirnyObjekt {
         return prumer;
     }
     public void vypisInfo(){
-        System.out.println("Nazev: "+nazev + ", Typ: "+typ + ", Prumer: "+prumer + ", Typ Atmosfery: "+typAtmosfery);
+        System.out.println("Nazev: "+nazev + ", Typ: "+typ + ", Prumer: " + prumer + ", Typ Atmosfery: "+typAtmosfery);
     }
 }

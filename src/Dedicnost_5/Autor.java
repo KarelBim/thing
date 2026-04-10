@@ -3,8 +3,8 @@ package Dedicnost_5;
 public class Autor {
     private String jmeno;
     private String prijmeni;
-    private String datumNarozeni;
-    public Autor(String jmeno, String prijmeni, String datumNarozeni) {
+    private int datumNarozeni;
+    public Autor(String jmeno, String prijmeni, int datumNarozeni) {
         this.jmeno = jmeno;
         this.prijmeni = prijmeni;
         this.datumNarozeni = datumNarozeni;
@@ -14,5 +14,8 @@ public class Autor {
     }
     public String getPrijmeni() {
         return prijmeni;
+    }
+    public String getCeleJmeno(){
+        return jmeno + " " + prijmeni;
     }
 }
