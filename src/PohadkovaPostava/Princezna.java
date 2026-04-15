@@ -1,6 +1,7 @@
 package PohadkovaPostava;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Princezna extends PohadkovaPostava{
     public Princezna(String jmeno, int vek) {
@@ -15,8 +16,12 @@ public class Princezna extends PohadkovaPostava{
     public void zmenJmeno(String jmeno, String prijemni){
         setJmeno(jmeno + " " + prijemni);
     }
-    public boolean spokojenaSJmenem(){
+    public void spokojenaSJmenem(){
         Random r = new Random();
-        return r.nextBoolean();
+        Scanner sc = new Scanner(System.in);
+        while(r.nextBoolean()){
+            System.out.println("Princezna není spokojená s jménem vypiš jiné");
+            zmenJmeno(sc.nextLine());
+        }
     }
 }
