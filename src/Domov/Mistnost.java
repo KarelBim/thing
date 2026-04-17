@@ -7,9 +7,15 @@ abstract class Mistnost {
     private double maximalniCena;
     private ArrayList<Nabytek> nabytek = new ArrayList<>();
     abstract void popis();
+    public void setNazev(String nazev) {this.nazev = nazev;}
+    public void removeNabytek(int n){
+        nabytek.remove(n);
+    }
     public void vypsatNabytek(){
+        int n = 1;
         for (Nabytek nabytek : nabytek) {
-            nabytek.getNazev();
+            System.out.println(n + " - " + nabytek.getNazev());
+            n++;
         }
     }
     public Mistnost(String nazev, double maximalniCena) {
@@ -33,4 +39,5 @@ abstract class Mistnost {
         }
     }
     public String getNazev(){return nazev;}
+    public int getPocetNabytku(){return nabytek.size();}
 }
