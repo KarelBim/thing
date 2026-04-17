@@ -4,18 +4,17 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Dum {
-    static Mistnost[] mistnost = new Mistnost[3];
     static Scanner sc = new Scanner(System.in);
-    static void vypsatMistnosti(int k){
-        for(Mistnost mistnost : mistnost){
+    static void vypsatMistnosti(int k,Mistnost[] mistnost){
+        for(Mistnost mistnos : mistnost){
             System.out.print(k +  " - ");
-            System.out.println(mistnost.getNazev());
+            System.out.println(mistnos.getNazev());
             k++;
         }
     }
-    static void vypsatMistnosti(){
-        for(Mistnost mistnost : mistnost){
-            System.out.println(mistnost.getNazev());
+    static void vypsatMistnosti(Mistnost[] mistnost){
+        for(Mistnost mistnos : mistnost){
+            System.out.println(mistnos.getNazev());
         }
     }
     static int getNum(){
@@ -57,15 +56,15 @@ public class Dum {
             return num;
         }
     }
-    static void akce(int akce){
+    static void akce(int akce,Mistnost[] mistnost){
         Mistnost mist = null;
         switch (akce){
             case 1:
-                vypsatMistnosti();
+                vypsatMistnosti(mistnost);
                 break;
             case 2:
                 System.out.println("Do jaké místnosti chcete přidat nábytek:");
-                vypsatMistnosti(1);
+                vypsatMistnosti(1,mistnost);
                 mist = mistnost[getNum(mistnost.length)-1];
                 do {
                     System.out.println("Jméno nábytku který chcete přidat: ");
@@ -83,7 +82,7 @@ public class Dum {
                 break;
             case 3:
                 System.out.println("Z jaké místnosti chcete odebrat nábytek:");
-                vypsatMistnosti(1);
+                vypsatMistnosti(1,mistnost);
                 mist = mistnost[getNum(mistnost.length)-1];
                 if(mist.getPocetNabytku() == 0){
                     System.out.println("V místnostni není nábytek");
@@ -106,7 +105,7 @@ public class Dum {
                 break;
             case 4:
                 System.out.println("jakou místnost chcete přejmenovat:");
-                vypsatMistnosti(1);
+                vypsatMistnosti(1,mistnost);
                 mist = mistnost[getNum(mistnost.length)-1];
                 System.out.println("Napište název místnosti");
                 mist.setNazev(sc.nextLine());
@@ -116,6 +115,7 @@ public class Dum {
         }
     }
     public static void main(String[] args) {
+        Mistnost[] mistnost = new Mistnost[3];
         sc.useLocale(Locale.UK);
         mistnost[0] = new Loznice();
         mistnost[1] = new Koupelna();
@@ -127,7 +127,7 @@ public class Dum {
             System.out.println("3 - odebrat nábytek");
             System.out.println("4 - přejmenovat místnost");
             System.out.println("5 - ukončit program");
-            akce(getNum());
+            akce(getNum(),mistnost);
         }
     }
 }
