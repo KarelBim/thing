@@ -1,5 +1,6 @@
 package Domov;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Dum {
@@ -44,24 +45,15 @@ public class Dum {
         return num;
     }
     static int getNum(int n){
-        int num;
         if(n == 0){
             n = Integer.MAX_VALUE;
         }
-        try{
-            num = sc.nextInt();
-        }
-        catch(Exception e){
-            System.out.println("Musí být celé číslo");
-            sc.nextLine();
-            return getNum();
-        }
-        if(num > n || num < 0){
+        int num = getNum();
+        if(num > n || num <= 0){
             System.out.println("číslo musí být kládné a v intervalu");
-            return getNum();
+            return getNum(n);
         }
         else {
-            sc.nextLine();
             return num;
         }
     }
@@ -116,6 +108,7 @@ public class Dum {
                 System.out.println("jakou místnost chcete přejmenovat:");
                 vypsatMistnosti(1);
                 mist = mistnost[getNum(mistnost.length)-1];
+                System.out.println("Napište název místnosti");
                 mist.setNazev(sc.nextLine());
                 break;
             case 5:
@@ -123,6 +116,7 @@ public class Dum {
         }
     }
     public static void main(String[] args) {
+        sc.useLocale(Locale.UK);
         mistnost[0] = new Loznice();
         mistnost[1] = new Koupelna();
         mistnost[2] = new Kuchyn();
