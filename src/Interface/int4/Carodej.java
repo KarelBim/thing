@@ -22,7 +22,7 @@ public class Carodej extends Postava implements IBojovnik{
     }
     public void vypisStav(){
         if(jeNazivu()){
-            System.out.println("Čaroděj " + getJmeno() + " je naživu");
+            System.out.println("Čaroděj " + getJmeno() + " Životy: " + getZivoty() + " Mana: " + mana);
         }
         else{
             System.out.println("Čaroděj " + getJmeno() + " není na živu");

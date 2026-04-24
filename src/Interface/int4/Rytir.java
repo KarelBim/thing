@@ -11,7 +11,10 @@ public class Rytir extends Postava implements IBojovnik{
     }
     public void vypisStav(){
         if(jeNazivu()){
-            System.out.println("Rytíř " + getJmeno() + " je naživu");
+            System.out.println("Rytíř " + getJmeno() + " Životy: " + getZivoty());
+        }
+        else{
+            System.out.println("Rytíř " + getJmeno() + " není na živu");
         }
     }
     public int utoc(){

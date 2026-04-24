@@ -27,8 +27,16 @@ public class Main {
                 while (bojovnik == i) {
                     bojovnik = rand.nextInt(bojovnici.length);
                 }
+                System.out.println(((Postava) bojovnici[i]).getJmeno() + " útočí se "+ ((Postava) bojovnici[i]).getUtok() +" silou na " );
                 bojovnici[bojovnik].primiZasah(bojovnici[i].utoc());
                 bojovnici[bojovnik].vypisStav();
+                System.out.println();
+            }
+        }
+        System.out.println("výherce:");
+        for(IBojovnik p : bojovnici){
+            if(p.jeNazivu()){
+                p.vypisStav();
             }
         }
     }

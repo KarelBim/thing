@@ -26,7 +26,7 @@ public class Lukostrelec extends Postava implements IBojovnik {
     }
     public void vypisStav(){
         if(jeNazivu()){
-            System.out.println("Lukostřelec " + getJmeno() + " je naživu");
+            System.out.println("Lukostřelec " + getJmeno() + " Životy: " + getZivoty() + " počet šípů: " + pocetSipu);
         }
         else{
             System.out.println("Lukostřelec " + getJmeno() + " není na živu");
