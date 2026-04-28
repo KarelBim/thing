@@ -9,25 +9,28 @@ public class Main {
         prekazky.add(new Prekazka("Lepiva kuchynka", 2, 15, 35, 6, true));
         prekazky.add(new Prekazka("Chemicky sklad", 4, 10, 25, 4, false));
         prekazky.add(new Prekazka("Nouzovy koridor", 3, 20, 75, 2, false));
-        prekazky.add(new Prekazka("UV kontrolni brana", 2, 30, 90, 0, false));
-        prekazky.add(new Prekazka("Odpadni potrubi", 1, 10, 15, 12, false));
+        prekazky.add(new Prekazka("UV kontrolni brana", 2, 30, 85, 0, false));
+        prekazky.add(new Prekazka("Odpadni potrubi", 2, 10, 15, 12, false));
         ArrayList<ISvab> svaby = new ArrayList<>();
         svaby.add(new MalySvab("Fero",35));
         svaby.add(new ObrnenySvab("Brutus",50));
-        svaby.add(new LetajiciSvab("Turbo",40));
+        svaby.add(new LetajiciSvab("Turbo",100));
         for (ISvab svab : svaby) {
             for (Prekazka p : prekazky) {
                 if(svab.muzeProjit(p)){
                     svab.projdiPrekazku(p);
+                    System.out.println(svab.getJmeno() + " se dostal přes překážku " + p.getJmeno());
                 }
                 else{
                     p.addSkonanySvab((Svab)svab);
                     if(svab.jeNazivu()){
-                        System.out.println("Šváb se zasekl v " + p.getJmeno());
+                        System.out.println("Šváb" + svab.getJmeno() + "se zasekl v " + p.getJmeno());
+                        System.out.println("----------------------------------------");
                     }
                     break;
                 }
                 svab.vypisStav();
+                System.out.println();
             }
         }
         for (ISvab svab : svaby) {

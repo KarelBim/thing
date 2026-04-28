@@ -32,7 +32,7 @@ public class Svab {
     }
     public void vypisStav(){
         if(nazivu){
-            System.out.println("Šváb: " + jmeno + " Energie: " + energie);
+            System.out.println("Šváb " + jmeno + " Energie: " + energie);
         }
         else{
             System.out.println("Šváb " + jmeno + " selhal útěk");
