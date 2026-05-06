@@ -24,14 +24,18 @@ public class Main {
                 else{
                     p.addSkonanySvab((Svab)svab);
                     if(svab.jeNazivu()){
-                        System.out.println("Šváb" + svab.getJmeno() + "se zasekl v " + p.getJmeno());
-                        System.out.println("----------------------------------------");
+                        System.out.println("Šváb " + svab.getJmeno() + " se zasekl v " + p.getJmeno());
                     }
+
                     break;
                 }
                 svab.vypisStav();
                 System.out.println();
             }
+            if(svab.getPocetProjitychPrekazek() == prekazky.size()){
+                System.out.println("Šváb se dostal z laboratoře!");
+            }
+            System.out.println("----------------------------------------");
         }
         for (ISvab svab : svaby) {
             System.out.print("Šváb " + svab.getJmeno() + " energie: " + svab.getEnergie() + " překonal " + svab.getPocetProjitychPrekazek() + " překážek");
@@ -48,6 +52,8 @@ public class Main {
                 System.out.println(" neutekl z laboratoře");
             }
         }
+        System.out.println("----------------------------------------");
+        //na jakych prekazkach skoncily svaby
         for(Prekazka p : prekazky){
             ArrayList<Svab> svabyMrtve = p.getSkoncovaniSvaby();
             if(!svabyMrtve.isEmpty()){
