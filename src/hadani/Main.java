@@ -24,34 +24,34 @@ public class Main {
         return num;
     }
     public int[] getPocetBykAKrava(int hadaneCislo,int hracovoCislo){
-        int[] cislice = new int[10];
+        int[] cisliceHadane = new int[10];
+        int[] cisliceHracova = new int[10];
         int pocetByk = 0;
         int pocetKrav = 0;
         String hadanaCislice = hadaneCislo+"";
         String hracovoCislice = hracovoCislo+"";
-        int[] cislaKtereNe = new int[hracovoCislice.length()];
-        for(char a : hadanaCislice.toCharArray()){
-            cislice[Character.getNumericValue(a)]++;
-        }
-        int i =0;
-        while(i != hadanaCislice.length()){
-            for(int j=0;j<hracovoCislice.length();j++){
-                int cisliceCisla = Character.getNumericValue(hadanaCislice.charAt(i));
-                int cisliceHrace = Character.getNumericValue(hracovoCislice.charAt(j));
-                if(cisliceCisla == cisliceHrace) {
-                    if (cislaKtereNe[j] == 0) {
-                        if (i == j) {
-                            pocetByk++;
-                            cislaKtereNe[j] = 1;
-                        } else if (cislice[cisliceHrace] != 0) {
-                            pocetKrav++;
-                        }
-                        cislice[cisliceHrace]--;
-                        i++;
-                    }
-                }
+        String hadanaCisliceKrav = "";
+        String hracovaCisliceKrav = "";
+        for(int i = 0;i<hadanaCislice.length();i++){
+            if(hadanaCislice.charAt(i) == hracovoCislice.charAt(i)){
+                pocetByk++;
             }
-            i++;
+            else{
+                hadanaCisliceKrav += hadanaCislice.charAt(i);
+                hracovaCisliceKrav += hracovaCislice.charAt(i);
+            }
+        }
+        for(char a : hadanaCisliceKrav.toCharArray()){
+            cisliceHadane[Character.getNumericValue(a)]++;
+        }
+        for(char a : hracovaCisliceKrav.toCharArray()){
+            cisliceHracova[Character.getNumericValue(a)]++;
+        }
+        for(int i = 0;i<hadaneCisliceKrav.length;i++){
+            if(cisliceHadane[i] != 0 && cisliceHracova[i] != 0){
+                int num = cisliceHracova[i] - cisliceHadane[i];
+                pocetKrav += (num < 0) cisliceHracova[i]:cisliceHadane[i];
+            }
         }
         return new int[]{pocetByk,pocetKrav};
     }
