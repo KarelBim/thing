@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner sc = new Scanner(System.in);
+    public void vypsatJ(ArrayList<IObjednani> objednavky){
+        for(int i = 0; i < objednavky.size(); i++){
+            System.out.println(i);
+        }
+    }
     public void vypsat(ArrayList<Jidlo> jidla){
         for(int i = 0; i<jidla.size(); i++){
             System.out.print(i +  1 + " - ");
@@ -45,7 +50,10 @@ public class Main {
                         objednavky.add(new JidloKRozvozu());
                         Jidlo j = menu.get(m.getCislo() - 1);
                         System.out.println("Kolik chcete: ");
-                        objednavky.get(objednavky.size() - 1).addJidla(j, m.getCislo());
+                        int cislo = m.getCislo();
+                        IObjednani objednavka = objednavky.get(cislo - 1);
+                        objednavka.addJidla(j, cislo);
+                        objednavka.objednej(cislo);
                         System.out.println("chcete pokračovat? y:n");
                         if(sc.nextLine().equalsIgnoreCase("y")){
                             break;
@@ -53,6 +61,9 @@ public class Main {
                     } while(true);
                     break;
                 case "2":
+                    System.out.println("Vyberte objednávku na vypsání");
+                    m.vypsatJ(objednavky);
+                    m.vypsat(objednavky.get(m.getCislo()).getJidla());
                     break;
                 case "3":
                     System.exit(0);
