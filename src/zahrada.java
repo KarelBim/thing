@@ -17,11 +17,17 @@ public class zahrada {
             System.out.println();
         }
     }
-    public int getCisla(HashMap<Integer,ArrayList<int[]>> vrcholy){
-        int nejmensi = Integer.MIN_VALUE;
-        for(int k : vrcholy.keySet()){
-            for(int[] i : vrcholy.get(k)){
-
+    public static void getCisla(HashMap<Integer,ArrayList<int[]>> vrcholy,int vrchol, int celkem,ArrayList<Integer> cisla){
+        if(!vrcholy.containsKey(vrchol)){
+            cisla.add(celkem);
+            return;
+        }
+        for(int[] s : vrcholy.get(vrchol)){
+            if(vrcholy.containsKey(s[0])){
+                getCisla(vrcholy, s[0], celkem + s[1],cisla);
+            }
+            else{
+                cisla.add(celkem + s[1]);
             }
         }
     }
@@ -47,10 +53,17 @@ public class zahrada {
                 vrcholy.get(vrchol1).add(new int[]{vrchol2,hrana});
             }
         }
+        ArrayList<Integer> cisla = new ArrayList<>();
+        for(int[] s : vrcholy.get(1)){
+            getCisla(vrcholy,s[0],s[1],cisla);
+        }
         for(int key : vrcholy.keySet()){
             System.out.println(key);
             vypsat(vrcholy.get(key));
             System.out.println();
+        }
+        for(int c : cisla){
+            System.out.println(c);
         }
     }
     static class Reader {
